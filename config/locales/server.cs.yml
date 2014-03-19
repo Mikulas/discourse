@@ -110,52 +110,58 @@ cs:
       other: '%{count} příspěvků'
     new-topic: |
       Vítejte na %{site_name} &mdash; **děkujeme, že jste zahájili novou konverzaci!**
-
+      
       - Popisuje název vašeho tématu jeho obsah tak, aby v něm našli to, co objektivně očekávají?
-
+      
       - První příspěvek určuje téma: O čem je? Bude to pro ostatní zajímavé? Proč je to důležité? Jaké odpovědi od komunity očekáváte?
-
+      
       - Zkuste zvolit správná slova tak, aby bylo možné vaše téma *najít*. Pokud patří do nějaké kategorie, zvolte ji.
-
+      
       Pro více informací, [shlédněte naše FAQ](/faq). Tento panel se zobrazí pouze pro váš první %{education_posts_text}.
     new-reply: |
       Vítejte na %{site_name} &mdash; **děkujeme, že příspíváte do konverzace!**
-
+      
       - Zlepšuje (i třeba jen malou mírou) vaše odpověď celou konverzaci?
-
+      
       - Respektujte vaši spřízněnou komunitu stejně dobře, jak byste chtěli, aby jste byli sami respektování.
-
+      
       - Je v pořádku, pokud jste kritičtí. Kritizujte však *myšlenky* a ne lidi.
-
+      
       Pro více informací, [shlédněte naše FAQ](/faq). Tento panel se zobrazí pouze pro váš první %{education_posts_text}.
     avatar: |
       ### How about a new picture for your account?
-
+      
       You've posted a few topics and replies, but your avatar isn't as unique as you are -- it's the same default avatar all new users have.
-
+      
       Have you considered **[visiting your user profile](%{profile_path})** and uploading a custom image that represents you?
-
+      
       It's easier to follow community discussions and find interesting people in conversations when everyone has a unique avatar!
     sequential_replies: |
       ### Consider replying to several posts at once
-
+      
       Rather than many sequential replies to a topic, please consider a single reply that includes quotes or @name references to previous posts.
-
+      
       You can edit your previous reply to add a quote by highlighting text and selecting the <b>quote reply</b> button that appears.
-
+      
       It's easier for everyone to read topics that have fewer in-depth replies versus lots of small, individual replies.
     dominating_topic: |
       ### Let others join the conversation
-
+      
       This topic is clearly important to you &ndash; you've posted more than %{percent}% of the replies here.
-
+      
       Are you sure you're providing adequate time for other people to share their points of view, too?
     too_many_replies: |
       ### You have reached the reply limit for this topic
-
+      
       We're sorry, but new users are temporarily limited to %{newuser_max_replies_per_topic} replies in the same topic.
-
+      
       Instead of adding another reply, please consider editing your previous replies, or visiting other topics.
+    reviving_old_topic: |
+      ### Revive this topic?
+      
+      The last reply to this topic is now over %{days} days old. Your reply will bump the topic to the top of its list and notify anyone previously involved in the conversation.
+      
+      Are you sure you want to continue this old conversation?
   activerecord:
     attributes:
       category:
@@ -192,7 +198,10 @@ cs:
   category:
     topic_prefix: 'Definice kategorie pro %{category}'
     replace_paragraph: '[Nahraďte tento první odstavec krátkých popisem nové kategorie. Zkuste se vejít do 200 znaků.]'
-    post_template: '%{replace_paragraph}\\n\\nPoužijte toto místo níže pro delší popis a stanovení pravidel diskuze!'
+    post_template: |
+      %{replace_paragraph}\
+      \
+      Použijte toto místo níže pro delší popis a stanovení pravidel diskuze!
     errors:
       self_parent: Těžko může být kategorie podkategorie sama sebe.
       depth: Nemůžete vnořovat podkategorie pod sebe.
@@ -352,13 +361,19 @@ cs:
       description: Tento příspěvek obsahuje něco, kvůli čemu chci s tímto člověkem mluvím přímo a soukromě.
       long_form: informoval uživatele
       email_title: 'Ohledně vašeho příspěvku v tématu "%{title}"'
-      email_body: '%{link}\\n\\n%{message}'
+      email_body: |
+        %{link}\
+        \
+        %{message}
     notify_moderators:
       title: Upozornit moderátory
       description: 'Příspěvek by měl vidět moderátor kvůli porušení <a href="/faq">FAQ</a>, <a href="/tos">Podmínek používání</a> nebo kvůli jinému důvodu.'
       long_form: označil příspěvek pro moderátora
       email_title: 'Příspěvek v tématu "%{title}" vyžaduje pozornost moderátora'
-      email_body: '%{link}\\n\\n%{message}'
+      email_body: |
+        %{link}\
+        \
+        %{message}
     bookmark:
       title: Záložka
       description: Přidat záložku k tomuto příspěvku
@@ -385,7 +400,10 @@ cs:
       description: 'This topic requires general moderator attention based on the <a href="/faq">FAQ</a>, <a href="%{tos_url}">TOS</a>, or for another reason not listed above.'
       long_form: označil příspěvek pro moderátora
       email_title: 'The topic "%{title}" requires moderator attention'
-      email_body: '%{link}\\n\\n%{message}'
+      email_body: |
+        %{link}\
+        \
+        %{message}
   flagging:
     you_must_edit: '<p>Váš příspěvek byl již několikrát nahlášen jako závadný. Další informace najdete v soukromých zprávách.</p>'
     user_must_edit: '<p>Nahlášený obsah je skrytý.</p>'
@@ -490,6 +508,7 @@ cs:
     twitter_config_warning: 'Server je nakonfigurován, aby povoloval registraci a přihlášení přes Twitter (enable_twitter_logins), ale nejsou nastaveny hodnoty "key" a "secret". Navštivte <a href="/admin/site_settings">nastevení webu</a> a opravte nastavení. <a href="https://github.com/discourse/discourse/wiki/The-Discourse-Admin-Quick-Start-Guide#enable-twitter-logins" target="_blank">Pro více informací si přečtěte tento návod</a>.'
     github_config_warning: 'Server je nakonfigurován, aby povoloval registraci a přihlášení přes GitHub (enable_github_logins), ale nejsou nastaveny hodnoty "client id" a "secret". Navštivte <a href="/admin/site_settings">nastevení webu</a> a opravte nastavení. <a href="https://github.com/discourse/discourse/wiki/The-Discourse-Admin-Quick-Start-Guide" target="_blank">Pro více informací si přečtěte tento návod</a>.'
     s3_config_warning: 'Server je nakonfigurován, aby nahrával soubory na S3, ale chybí nastavení: s3_access_key_id, s3_secret_access_key nebo s3_upload_bucket. Navštivte <a href="/admin/site_settings">nastavení webu</a> a opravte nastavení. <a href="http://meta.discourse.org/t/how-to-set-up-image-uploads-to-s3/7229" target="_blank">Přečtěte si "How to set up image uploads to S3?" pro více informací</a>.'
+    s3_backup_config_warning: 'The server is configured to upload backups to s3, but at least one the following setting is not set: s3_access_key_id, s3_secret_access_key or s3_backup_bucket. Go to <a href="/admin/site_settings">the Site Settings</a> and update the settings. <a href="http://meta.discourse.org/t/how-to-set-up-image-uploads-to-s3/7229" target="_blank">See "How to set up image uploads to S3?" to learn more</a>.'
     image_magick_warning: 'Server je nakonfigurován, aby vytvářel náhledy velkých obrázků, ale není nainstalován ImageMagick. Nainstalujte ImageMagick pomocí vašeho oblíbeného balíčkovače, nebo navštivte <a href="http://www.imagemagick.org/script/binary-releases.php" target="_blank">web ImageMagick pro stažení aktuální verze</a>.'
     failing_emails_warning: '%{num_failed_jobs} emailů se nepodařilo odeslat. Zkontrolujte soubor config/production.rb a ujistěte se, že máte správné nastavení config.action_mailer.'
     default_logo_warning: "Nenastavili jste si vlastní logo pro váš web. Aktualizujte hodnoty logo_url, logo_small_url, a favicon_url v <a href='/admin/site_settings'>Nastavení webu</a>."
@@ -588,6 +607,7 @@ cs:
     category_post_template: Šablona definice kategorie, která se použije při vytváření nové kategorie
     onebox_max_chars: "Maximální počet znaků, které může 'onebox' naimportovat z externího webu"
     logo_url: Logo vašeho webu, např. http://example.com/logo.png
+    digest_logo_url: "The logo used in your site's email digest. If left blank `logo_url` will be used. eg: http://example.com/logo.png"
     logo_small_url: Malé logo, které se použije pokud odskrolujete dolů v tématu, např. http://example.com/logo-small.png
     favicon_url: Favicona vašeho webu, viz http://en.wikipedia.org/wiki/Favicon
     apple_touch_icon_url: Ikona používaná pro doteková zařízení od firmy Apple. Doporučené rozměry jsou 144px krát 144px.
@@ -635,6 +655,7 @@ cs:
     topics_per_period_in_top_summary: Počet témat zobrazených v přehledu populárních témat
     topics_per_period_in_top_page: Počet témat zobrazených na stránce populárních témat
     redirect_new_users_to_top_page_duration: Počet dní po které mají noví uživatelé být automaticky přesměrováni na stránku s populárními tématy
+    enable_badges: Enable the badge system (experimental)
     allow_index_in_robots_txt: Povolit robotům indexaci tohoto webu (aktualizuje robots.txt)
     email_domains_blacklist: "Seznam domén, jejichž emailové adresy nebudou přijímány, oddělený znakem '|'. Příklad: mailinator.com|trashmail.net"
     email_domains_whitelist: "Seznam domén, ze kterých bude povolena registrace, oddělený znamek '|'. POZOR: Emailové adresy z jiných než z těchto domén nebudou přijímány."
@@ -668,6 +689,10 @@ cs:
     github_client_id: "'Client id' pro přihlašování přes Github, registrace na https://github.com/settings/applications"
     github_client_secret: "'Client secret' pro přihlašování přes Github, registrace na https://github.com/settings/applications"
     allow_restore: "Povolit import, kterým lze přepsat VŠECHNA data na tomto webu; nechte nastaveno na 'false', pokud neplánujete dělat importy dat"
+    maximum_backups: The maximum amount of backups to keep on disk. Older backups are automatically deleted
+    backup_daily: Automatically create a site backup once a day
+    enable_s3_backups: Upload backups to S3 when complete. Make sure you have filled in your s3 credentials.
+    s3_backup_bucket: 'The remote bucket to hold backups. WARNING: Make sure it is a private bucket.'
     active_user_rate_limit_secs: Jak často aktualizujeme informaci o poslední návštěvě uživatelů, v sekundách
     previous_visit_timeout_hours: Kolik času musí uplynout v hodinách, než je návštěva uživatele považována za uplynulou
     rate_limit_create_topic: Počet sekund, které je nutné počkat od vytvoření tématu, než smí uživatel vytvořit další
@@ -768,10 +793,12 @@ cs:
     invites_shown: Maximální počet pozvánek zobrazený na uživatelově stránce
     short_progress_text_threshold: "After the number of posts in a topic goes above this number, the progress bar will only show the current post number. If you change the progress bar's width, you may need to change this value."
     default_code_lang: Default programming language syntax highlighting applied to GitHub code blocks (lang-auto, ruby, python etc.)
+    warn_reviving_old_topic_age: When someone starts replying to a topic older than this many days, a warning will be displayed to discourage the user from reviving an old discussion. Disable by setting to 0.
     embeddable_host: Host that can embed the comments from this Discourse forum
     feed_polling_enabled: Whether to import a RSS/ATOM feed as posts
     feed_polling_url: URL of RSS/ATOM feed to import
     embed_by_username: Discourse username of the user who creates the topics
+    embed_truncate: Truncate the imported posts
     embed_category: Category of created topics
     embed_post_limit: Maximum number of posts to embed
     tos_accept_required: 'Uživatelé budou muset při registraci zaškrtnout, že souhlasí s Podmínkami používání. Zprávu můžete upravit v záložce Obsah webu změnou „Registrace: Zpráva s podmínkami používání“.'
@@ -786,6 +813,7 @@ cs:
     private_message: '%{display_username} vám zaslal soukromou zprávu: %{link}'
     invited_to_private_message: '%{display_username} vás pozval k soukromé zprávě: %{link}'
     invitee_accepted: '%{display_username} přijal vaši pozvánku'
+    linked: '%{display_username} linked you in %{link}'
   search:
     within_post: '#%{post_number} by %{username}: %{excerpt}'
     types:
@@ -1038,55 +1066,55 @@ cs:
       subject_template: Chyba čtení emailu
       text_body_template: |
         Toto je automatická zpráva informující vás, že čtení následujícího emailu selhalo.
-
+        
         Opravte prosím následující problém:
-
+        
         Chyba - %{error}
-
+        
         %{source}
     email_reject_trust_level:
       subject_template: Zpráva odmítnuta
       text_body_template: |
         Zpráva kterou jste poslali na %{to} byla systémem odmítnuta.
-
+        
         Nemáte dostatečnou důvěryhodnost k posílání příspěvků na tuhle emailovou adresu.
     too_many_spam_flags:
       subject_template: Účet zablokován
       text_body_template: |
         Ahoj,
-
+        
         Toto je automatizovaná zpráva z %{site_name}, která vás má informovat o tom, že vaše příspěvky byly automaticky skryty, protože byly komunitou označeny jako spam.
-
+        
         Jako předběžné opatření byl váš účet zablokován a není s ním možné vytvářet další odpovědi nebo nová témata, dokud váš účet neshlédne moderátor.
-
+        
         Pro další informace se prosím obraťte na naše [FAQ](%{base_url}/faq).
     blocked_by_staff:
       subject_template: Účet zablokován
       text_body_template: |
         Ahoj,
-
+        
         Toto je automatizovaná zpráva z %{site_name}, která vás má informovat o tom, že váš účet byl zablokován moderátorem.
-
+        
         Pro další informace se prosím obraťte na naše [FAQ](%{base_url}/faq).
     user_automatically_blocked:
       subject_template: 'Uživatel %{username} byl automaticky zablokován'
       text_body_template: |
         Toto je automatická zpráva, která vás má informovat o tom, že uživatel [%{username}](%{user_url}) byl automaticky zablokován protože příliš mnoho lidí označilo příspěvky uživatele %{username} jako spam.
-
+        
         Prosím, [projděte si nahlášení](/admin/flags). Pokud by %{username} neměl být zablokován, klikněte na tlačítko 'odblokovat' na [administrátorské stránce uživatele](%{user_url}).
     spam_post_blocked:
       subject_template: 'V příspěvku uživatele %{username} byl detekován spam'
       text_body_template: |
         Toto je automatizovaná zpráva, která vás má informovat o tom, že uživatel [%{username}](%{user_url}) se pokusil zasílat odkazy, které ale byly označeny jako spam kvůli nastavení 'newuser_spam_host_threshold'.
-
+        
         Prosím [zkontrolujte tohoto uživatele](%{user_url}).
     unblocked:
       subject_template: Účet odblokován
       text_body_template: |
         Ahoj,
-
+        
         Toto je automatizovaná zpráva z %{site_name}, která vás má informovat o tom, že váš účet byl odblokován na základě rozhodnutí moderátora.
-
+        
         Nyní můžete opět vytvářet nové odpovědi a témata.
     pending_users_reminder:
       subject_template:
@@ -1095,7 +1123,7 @@ cs:
         other: '%{count} users waiting for approval'
       text_body_template: |
         There are new user signups waiting to be approved (or rejected) before they can access this forum.
-
+        
         [Please review them in the admin section](%{base_url}/admin/users/list/pending).
   unsubscribe_link: 'Pokud již od nás nechcete dostávat emaily, navšivte stránku s vašimi [uživatelskými preferencemi](%{user_preferences_url}).'
   user_notifications:
@@ -1110,56 +1138,56 @@ cs:
       subject_template: "[%{site_name}] %{username} invited you to a private message '%{topic_title}'"
       text_body_template: |
         %{username} invited you to a private message '%{topic_title}' on %{site_name}:
-
+        
         Please visit this link to view the topic: %{base_url}%{url}
     user_replied:
       subject_template: "[%{site_name}] %{username} vás citoval v '%{topic_title}'"
       text_body_template: |
         %{username} vás citoval v '%{topic_title}' na %{site_name}:
-
+        
         ---
         %{message}
-
+        
         ---
         Prosím navšivte tento odkaz, chcete-li odpovědět: %{base_url}%{url}
     user_quoted:
       subject_template: "[%{site_name}] %{username} vás citoval v '%{topic_title}'"
       text_body_template: |
         %{username} vás citoval v '%{topic_title}' na %{site_name}:
-
+        
         ---
         %{message}
-
+        
         ---
         Prosím navšivte tento odkaz, chcete-li odpovědět: %{base_url}%{url}
     user_mentioned:
       subject_template: "[%{site_name}] %{username} vás citoval v '%{topic_title}'"
       text_body_template: |
         %{username} vás citoval v '%{topic_title}' na %{site_name}:
-
+        
         ---
         %{message}
-
+        
         ---
         Prosím navšivte tento odkaz, chcete-li odpovědět: %{base_url}%{url}
     user_posted:
       subject_template: "[%{site_name}] %{username} vás citoval v '%{topic_title}'"
       text_body_template: |
         %{username} vás citoval v '%{topic_title}' na %{site_name}:
-
+        
         ---
         %{message}
-
+        
         ---
         Prosím navšivte tento odkaz, chcete-li odpovědět: %{base_url}%{url}
     user_posted_pm:
       subject_template: '[%{site_name}] [PM] %{topic_title}'
       text_body_template: |
         %{username} vás citoval v '%{topic_title}' na %{site_name}:
-
+        
         ---
         %{message}
-
+        
         ---
         Prosím navšivte tento odkaz, chcete-li odpovědět: %{base_url}%{url}
     digest:
@@ -1168,7 +1196,9 @@ cs:
       new_activity: 'Nová aktivita ve vašich tématech a příspěvcích:'
       top_topics: 'Poslední příspěvky, které si komunita oblíbila:'
       other_new_topics: 'Other New Topics:'
-      unsubscribe: 'Tento souhrnný email je zaslán jako oznámení od %{site_link}, pokud jste se nepřihlásili v poslední době.\\nPokud nechcete tento souhrn dostávat, navštivte %{unsubscribe_link}.'
+      unsubscribe: |
+        Tento souhrnný email je zaslán jako oznámení od %{site_link}, pokud jste se nepřihlásili v poslední době.\
+        Pokud nechcete tento souhrn dostávat, navštivte %{unsubscribe_link}.
       click_here: klikněte zde
       from: 'souhrn z %{site_name}'
       read_more: Číst dále
@@ -1272,3 +1302,8 @@ cs:
     message_to_blank: message.to is blank
     text_part_body_blank: text_part.body is blank
     body_blank: body is blank
+  badges:
+    types:
+      gold: Gold
+      silver: Silver
+      bronze: Bronze

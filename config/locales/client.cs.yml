@@ -62,7 +62,7 @@ cs:
           one: 1r
           few: '%{count}r'
           other: '%{count}let'
-        date_month: "D MMM"
+        date_month: D MMM
         date_year: "MMM 'YY"
       medium:
         x_minutes:
@@ -365,7 +365,7 @@ cs:
           one: byly zaslány v posledním týdnu
           few: 'byly zaslány v posledních {{count}} týdnech'
           other: 'byly zaslány v posledních {{count}} týdnech'
-      auto_track_topics: Automaticky sledovat témata, která navštívím
+      auto_track_topics: Automaticky sledovat navštívená témata
       auto_track_options:
         never: nikdy
         always: vždy
@@ -444,7 +444,7 @@ cs:
     email: Emailová adresa
     username: Uživatelské jméno
     last_seen: Naposledy viděn
-    created: Vytvořeno
+    created: Účet vytvořen
     trust_level: Věrohodnost
     create_account:
       title: Vytvořit účet
@@ -570,6 +570,7 @@ cs:
       invitee_accepted: "<i title='přijetí pozvánky' class='fa fa-sign-in'></i> {{username}} přijal vaši pozvánku"
       moved_post: "<i title='přesunutý příspěvek' class='fa fa-arrow-right'></i> {{username}} přesunul příspěvek do {{link}}"
       total_flagged: celkem nahlášeno příspěvků
+      linked: "<i title='linked post' class='fa fa-arrow-left'></i> {{username}} {{link}}"
     upload_selector:
       title: Vložit obrázek
       title_with_attachments: Nahrát obrázek nebo soubor
@@ -603,7 +604,7 @@ cs:
       bulk:
         reset_read: reset přečteného
         dismiss_read: Dismiss Read
-        dismiss_new: Odbýt nové
+        dismiss_new: Odbýt nová
         toggle: toggle bulk selection of topics
         actions: Hromadné akce
         change_category: Změnit kategorii
@@ -634,7 +635,7 @@ cs:
         category: 'V kategorii {{category}} nejsou žádná další témata.'
         top: Nejsou tu žádná další populární témata.
     topic:
-      filter_to: 'Zobrazit {{post_count}} příspěvků v tématu'
+      filter_to: '{{post_count}} příspěvků v tématu'
       create: Nové téma
       create_long: Vytvořit nové téma
       private_message: Vytvořit soukromou konverzaci
@@ -680,8 +681,21 @@ cs:
       read_more_in_category: 'Chcete si přečíst další informace? Projděte si témata v {{catLink}} nebo {{latestLink}}.'
       read_more: 'Chcete si přečíst další informace? {{catLink}} nebo {{latestLink}}.'
       read_more_MF: |
-        {\nUNREAD, plural,\n=0 {}\none { Je tu <a href='/unread'>1 nepřečtené</a> }\nfew { Jsou tu <a href='/unread'># nepřečtená</a> }\nother { Je tu <a href='/unread'># nepřečtených</a> }\n} {\n  NEW, plural,\n    =0 {}\n    one { {BOTH, select, true{a } false {Je tu } other{}} <a href='/new'>1 nové</a> téma}\n    few { {BOTH, select, true{a } false {Jsou tu } other{}} <a href='/new'># nová</a> témata}\n    other { {BOTH, select, true{a } false {Je tu } other{}} <a href='/new'># nových</a> témat}\n}, nebo {CATEGORY, select, true {si projděte ostatní témata v kategorii {catLink}} false {{latestLink}} other {}}\
-        \ \n
+        {
+        UNREAD, plural,
+        =0 {}
+        one { Je tu <a href='/unread'>1 nepřečtené</a> }
+        few { Jsou tu <a href='/unread'># nepřečtená</a> }
+        other { Je tu <a href='/unread'># nepřečtených</a> }
+        } {
+          NEW, plural,
+            =0 {}
+            one { {BOTH, select, true{a } false {Je tu } other{}} <a href='/new'>1 nové</a> téma}
+            few { {BOTH, select, true{a } false {Jsou tu } other{}} <a href='/new'># nová</a> témata}
+            other { {BOTH, select, true{a } false {Je tu } other{}} <a href='/new'># nových</a> témat}
+        }, nebo {CATEGORY, select, true {si projděte ostatní témata v kategorii {catLink}} false {{latestLink}} other {}}\
+        \ 
+        
       browse_all_categories: Procházet všechny kategorie
       view_latest_topics: zobrazit populární témata
       suggest_create_topic: Co takhle založit nové téma?
@@ -1042,7 +1056,7 @@ cs:
       auto_close_label: 'Automaticky zavírat témata po:'
       auto_close_units: hodin
       email_in: 'Vlastní příchozí emailová adresa:'
-      email_in_allow_strangers: Přijímat email od neregistrovaných uživatelů
+      email_in_allow_strangers: Přijímat emaily i od neregistrovaných uživatelů
       edit_permissions: Upravit oprávnění
       add_permission: Přidat oprávnění
       this_year: letos
@@ -1102,7 +1116,7 @@ cs:
       with_topics: '%{filter} Témata'
       with_category: '%{filter} %{category} Témata'
       latest:
-        title: Poslední verze
+        title: Nejnovější
         help: nejaktuálnější témata
       hot:
         title: Populární
@@ -1124,6 +1138,11 @@ cs:
           other: 'Nepřečtené ({{count}})'
         help: sledovaná témata s nepřečtenými příspěvky
       new:
+        lower_title_with_count:
+          one: 1 nový
+          few: '{{count}} nové'
+          other: '{{count}} nových'
+        lower_title: nové
         title:
           one: Nové (1)
           few: 'Nové ({{count}})'
@@ -1343,6 +1362,8 @@ cs:
         title: Emailová adresa
         settings: Nastavení
         all: Všechny
+        sending_test: Sending test Email...
+        test_error: There was an issue sending email. Please check your settings and try again.
         sent: Odeslané
         skipped: Přeskočené
         sent_at: Odesláno
@@ -1595,6 +1616,18 @@ cs:
           embedding: Embedding
           legal: Právní záležitosti
           uncategorized: Nezařazené
+          backups: Zálohy
+      badges:
+        title: Badges
+        new_badge: New Badge
+        new: Noví
+        name: Jméno
+        display_name: Display Name
+        description: Popis
+        badge_type: Badge Type
+        save: Uložit
+        delete: Smazat
+        delete_confirm: Are you sure you want to delete this badge?
     lightbox:
       download: download
     keyboard_shortcuts_help:
@@ -1635,3 +1668,7 @@ cs:
         mark_regular: '<b>m</b> then <b>r</b> Mark topic as regular'
         mark_tracking: '<b>m</b> then <b>t</b> Mark topic as tracking'
         mark_watching: '<b>m</b> then <b>w</b> Mark topic as watching'
+    badges:
+      example_badge:
+        name: Example Badge
+        description: This is a generic example badge.
